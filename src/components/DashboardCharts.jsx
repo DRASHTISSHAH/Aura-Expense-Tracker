@@ -11,31 +11,31 @@ import {
 const CATEGORY_COLORS = {
   // Income
   'Salary':         '#10b981', // emerald
-  'Freelance':      '#3b82f6', // blue
-  'Gifts':          '#f59e0b', // amber
-  'Interest':       '#8b5cf6', // purple
-  'Dividend':       '#ec4899', // pink
+  'Freelance':      '#34d399',
+  'Gifts':          '#6ee7b7',
+  'Interest':       '#a7f3d0',
+  'Dividend':       '#059669',
 
   // Fixed Expenses
-  'Rent':           '#ef4444', // red
-  'Mortgage':       '#06b6d4', // cyan
-  'Insurance':      '#84cc16', // lime
-  'Utilities':      '#f97316', // orange
-  'Subscription':   '#a855f7', // fuchsia
+  'Rent':           '#f43f5e', // rose
+  'Mortgage':       '#fb7185',
+  'Insurance':      '#fda4af',
+  'Utilities':      '#e11d48',
+  'Subscription':   '#be123c',
 
   // Variable Expenses
-  'Food':           '#fcd34d', // bright yellow/amber
-  'Shopping':       '#ec4899', // pink
-  'Travel':         '#3b82f6', // blue
-  'Health':         '#10b981', // emerald
-  'Entertainment':  '#8b5cf6', // violet
+  'Food':           '#f59e0b', // amber
+  'Shopping':       '#fbbf24',
+  'Travel':         '#fcd34d',
+  'Health':         '#d97706',
+  'Entertainment':  '#b45309',
 
   // Investments
   'Stocks':         '#6366f1', // indigo
-  'Crypto':         '#d946ef', // fuchsia 2
-  'Real Estate':    '#14b8a6', // teal
-  'Gold':           '#eab308', // gold/yellow
-  'Mutual Funds':   '#8b5cf6', // purple
+  'Crypto':         '#818cf8',
+  'Real Estate':    '#4f46e5',
+  'Gold':           '#eab308',
+  'Mutual Funds':   '#a5b4fc',
 
   // Catch-all
   'General':        '#94a3b8',

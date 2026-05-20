@@ -1,8 +1,9 @@
 // src/components/LoginPage.jsx
 import React, { useState, useEffect } from 'react';
 import { signInWithGoogle } from '../services/auth';
+import { Sun, Moon } from 'lucide-react';
 
-function LoginPage({ isDarkMode }) {
+function LoginPage({ isDarkMode, toggleDarkMode }) {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -55,15 +56,36 @@ function LoginPage({ isDarkMode }) {
         justifyContent: 'center',
         position: 'relative'
       }}>
-        {/* Logo Section */}
-        <div style={{ position: 'absolute', top: 32, left: '50%', transform: 'translateX(-50%)', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <div style={{ width: 28, height: 28, background: theme.accent, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
-              <path d="M20 6L9 17l-5-5" />
-            </svg>
-          </div>
-          <span style={{ fontWeight: 800, fontSize: 16, letterSpacing: '-0.02em' }}>AURORA</span>
-        </div>
+        {/* Light/Dark Mode Toggle Button */}
+        {toggleDarkMode && (
+          <button
+            onClick={toggleDarkMode}
+            style={{
+              position: 'absolute',
+              top: '24px',
+              right: '24px',
+              zIndex: 100,
+              width: '48px',
+              height: '48px',
+              borderRadius: '12px',
+              border: `2px solid ${theme.border}`,
+              background: isDarkMode ? '#13111C' : '#FFFFFF',
+              color: theme.text,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: isDarkMode ? '4px 4px 0px rgba(255,255,255,0.06)' : '4px 4px 0px #000000',
+              cursor: 'pointer',
+              transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+            }}
+            className="hover:translate-y-[-2px] hover:translate-x-[-2px] hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_rgba(255,255,255,0.08)] active:translate-y-[0px] active:translate-x-[0px]"
+            title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
+            {isDarkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-indigo-600" />}
+          </button>
+        )}
+
+        {/* Logo Section Removed */}
 
         {/* Content Box */}
         <div style={{ width: '100%', maxWidth: 360, margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 10 }}>
@@ -142,10 +164,7 @@ function LoginPage({ isDarkMode }) {
           </div>
         </div>
 
-        {/* Footer */}
-        <div style={{ position: 'absolute', bottom: 20, left: 0, right: 0, textAlign: 'center', fontSize: 9, color: theme.sub, letterSpacing: '0.05em', textTransform: 'uppercase', fontWeight: 600 }}>
-          &copy; 2026 Aurora Financial Ecosystem. All rights reserved.
-        </div>
+        {/* Footer Removed */}
       </div>
     );
   }
@@ -159,8 +178,37 @@ function LoginPage({ isDarkMode }) {
       display: 'flex', 
       fontFamily: '"Inter", sans-serif',
       overflow: 'hidden',
-      width: '100%'
+      width: '100%',
+      position: 'relative'
     }}>
+      {/* Light/Dark Mode Toggle Button */}
+      {toggleDarkMode && (
+        <button
+          onClick={toggleDarkMode}
+          style={{
+            position: 'absolute',
+            top: '24px',
+            right: '24px',
+            zIndex: 100,
+            width: '48px',
+            height: '48px',
+            borderRadius: '12px',
+            border: `2px solid ${theme.border}`,
+            background: isDarkMode ? '#13111C' : '#FFFFFF',
+            color: theme.text,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: isDarkMode ? '4px 4px 0px rgba(255,255,255,0.06)' : '4px 4px 0px #000000',
+            cursor: 'pointer',
+            transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+          }}
+          className="hover:translate-y-[-2px] hover:translate-x-[-2px] hover:shadow-[6px_6px_0px_rgba(0,0,0,1)] dark:hover:shadow-[6px_6px_0px_rgba(255,255,255,0.08)] active:translate-y-[0px] active:translate-x-[0px]"
+          title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        >
+          {isDarkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-indigo-600" />}
+        </button>
+      )}
       
       {/* Left Side: Minimalist Login Panel */}
       <div style={{ 
@@ -173,15 +221,7 @@ function LoginPage({ isDarkMode }) {
         zIndex: 10,
         ...slideIn
       }}>
-        {/* Logo Section */}
-        <div style={{ position: 'absolute', top: 60, left: 80, display: 'flex', alignItems: 'center', gap: 12 }}>
-          <div style={{ width: 32, height: 32, background: theme.accent, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3">
-              <path d="M20 6L9 17l-5-5" />
-            </svg>
-          </div>
-          <span style={{ fontWeight: 800, fontSize: 18, letterSpacing: '-0.02em' }}>AURORA</span>
-        </div>
+        {/* Logo Section Removed */}
 
         <div style={{ maxWidth: 400 }}>
           <p style={{ fontSize: 12, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.4em', color: theme.accent, marginBottom: 24 }}>
@@ -263,10 +303,7 @@ function LoginPage({ isDarkMode }) {
           </div>
         </div>
 
-        {/* Footer */}
-        <div style={{ position: 'absolute', bottom: 60, left: 80, fontSize: 12, color: theme.sub }}>
-          &copy; 2026 Aurora Financial Ecosystem. All rights reserved.
-        </div>
+        {/* Footer Removed */}
       </div>
 
       {/* Right Side: Transparent so LandingPage Canvas shows through */}
@@ -276,12 +313,7 @@ function LoginPage({ isDarkMode }) {
            {/* Canvas removed: We now rely purely on the LandingPage Canvas underneath for a perfectly seamless transition! */}
         </div>
 
-        {/* Overlaid Detail Text (Optional / Subtle) */}
-        <div style={{ position: 'absolute', bottom: 60, right: 80, textAlign: 'right' }}>
-          <p style={{ fontSize: 10, fontWeight: 900, textTransform: 'uppercase', letterSpacing: '0.4em', opacity: 0.3 }}>
-            Powered by Next-Gen 3D Engine
-          </p>
-        </div>
+
       </div>
 
     </div>

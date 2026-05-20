@@ -26,8 +26,7 @@ const TransactionsList = ({
   searchQuery, 
   setSearchQuery,
   isDarkMode,
-  title = 'Recent Activity',
-  limit
+  title = 'Recent Activity'
 }) => {
   // Sort State: defaults to sorting by transaction_date in descending order (newest first)
   const [sortConfig, setSortConfig] = React.useState({ key: 'transaction_date', direction: 'desc' });
@@ -79,25 +78,11 @@ const TransactionsList = ({
         if (aValue > bValue) {
           return sortConfig.direction === 'asc' ? 1 : -1;
         }
-
-        // Secondary fallback to created_at for identical dates
-        if (sortConfig.key === 'transaction_date') {
-          const aCreated = new Date(a.created_at || 0).getTime();
-          const bCreated = new Date(b.created_at || 0).getTime();
-          if (aCreated < bCreated) return sortConfig.direction === 'asc' ? -1 : 1;
-          if (aCreated > bCreated) return sortConfig.direction === 'asc' ? 1 : -1;
-        }
-        
         return 0;
       });
     }
-    
-    if (limit && !searchQuery) {
-      return sortableItems.slice(0, limit);
-    }
-    
     return sortableItems;
-  }, [filteredTransactions, sortConfig, limit, searchQuery]);
+  }, [filteredTransactions, sortConfig]);
 
   const handleSort = (key) => {
     let direction = 'asc';
