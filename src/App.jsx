@@ -206,10 +206,7 @@ function App() {
         ...t,
         type: derivedType
       };
-    }).sort((a, b) => {
-      const dateDiff = new Date(b.transaction_date || 0) - new Date(a.transaction_date || 0);
-      return dateDiff !== 0 ? dateDiff : new Date(b.created_at || 0) - new Date(a.created_at || 0);
-    });
+    }).sort((a, b) => new Date(b.transaction_date) - new Date(a.transaction_date));
 
     // No display currency chosen → show each transaction in its original entered currency
     if (!displayCurrency || !exchangeRates) return base;
@@ -281,7 +278,7 @@ function App() {
           position: 'relative',
           zIndex: 1
         }}>
-          <LandingPage onScrollDown={() => setShowLogin(true)} isDarkMode={isDarkMode} hideText={showLogin} />
+          <LandingPage onScrollDown={() => setShowLogin(true)} isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(!isDarkMode)} hideText={showLogin} />
         </div>
         
         {/* Login Portal Layer - Overlaying without hiding the 3D card */}
@@ -302,7 +299,7 @@ function App() {
                 to { opacity: 1; transform: translateY(0); }
               }
             `}</style>
-            <LoginPage isDarkMode={isDarkMode} />
+            <LoginPage isDarkMode={isDarkMode} toggleDarkMode={() => setIsDarkMode(!isDarkMode)} />
           </div>
         )}
       </div>
@@ -333,8 +330,7 @@ function App() {
             isDarkMode={isDarkMode}
           />
           <TransactionsList
-            transactions={processedTransactions}
-            limit={5}
+            transactions={processedTransactions.slice(0, 5)}
             onDelete={handleDeleteTransaction}
             onEdit={(t) => {
               setTransactionToEdit({ ...t, amount: t.originalAmount, currency: t.originalCurrency });

@@ -7,6 +7,20 @@
     @apply antialiased text-slate-900 bg-slate-50 dark:bg-surface-dark dark:text-slate-100 transition-colors duration-300 font-sans;
     font-size: 13px;
   }
+  
+  /* Luxury & Retro Typography Custom Utilities */
+  .font-serif-luxury {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .font-display-luxury {
+    font-family: 'Fraunces', 'Cinzel', serif;
+  }
+  .font-sans-premium {
+    font-family: 'Plus Jakarta Sans', 'Outfit', 'Inter', sans-serif;
+  }
+  .font-mono-retro {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+  }
 }
 
 @layer components {
